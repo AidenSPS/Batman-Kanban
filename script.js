@@ -1,7 +1,7 @@
 /* Global Variables */
 // attributes = attribute, current value
 var attributes = [["Strength",0],["Intelligence",0],["Wisdom",0],["Constitution",0],["Dexterity",0],["Charisma",0]];
-// classReq = attributes[index], minimum to qualify, classes[index]
+// classReq = attributes[index], minimum value to qualify, classes[index]
 var classReq = [[0,11,0],[1,11,1],[2,11,2],[3,11,3],[4,11,4],[5,11,5]];
 var classes = [["Christian Bale","Batman Begins and The Dark Night","One Punch Knockout"],[]];
 var choices = [];
@@ -133,18 +133,18 @@ function stats() {
  * This function references a list of classes
  * And selects those that match the requirements
  * Based on the player's rolled attributes
+ * attributes = attribute, current value
+ * classReq = attributes[index], minimum value to qualify, classes[index]
  */
 function classOptions(){
   let classList = []; //Gives the possible characters(classes) we could be, Christan Bale, Ben Affleck
   let strengthRoll = attributes[0][1];
   let minRoll = 11; //We are saying that minRoll is 11 according to the current airTable database, will be subject to change;
-  // for (let att6 = 0; att6 < attributes.length; att6++) {
-  for (let att6 = 0; att6 < 1; att6++) {
-    choices.push(classes[classReq[2]]);
+  //for (let att6 = 0; att6 < attributes.length; att6++ ){
+  for (let att6 = 0; att6 < 1; att6++ ){
+    if (attributes[att6][1] >= classReq[att6][1]){
+      choices.push(classes[classReq[att6][2]][0]);
+    }
   }
-  if(strengthRoll >= minRoll){
-    alert("You could be "+classes[0][0]+".");
-    classList.push(classes[0][0]);
-  }
-  alert(choices.toString);
+  alert("You could be: "+JSON.stringify(choices));
 }
